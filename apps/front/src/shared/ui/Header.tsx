@@ -4,11 +4,13 @@ import {navigationItems} from "../config/navigation";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
-import {useUsersControllerMe} from "../api/visualiserApiComponents";
+import {useUsersControllerMe} from "../api/apiComponents";
 
 export default function Header() {
   const pathname = usePathname();
-  const {data, error, isFetched} = useUsersControllerMe({})
+  const {data, error, isFetched} = useUsersControllerMe({}, {
+
+  })
 
 
   console.log('user me =>>', data, error, isFetched)

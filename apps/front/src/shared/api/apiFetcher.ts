@@ -1,6 +1,6 @@
 import { ApiContext } from './apiContext';
 
-const baseUrl = ''; // TODO add your baseUrl
+const baseUrl = 'http://localhost:3001';
 
 export type ErrorWrapper<TError> =
   | TError
@@ -94,7 +94,7 @@ export async function apiFetch<
       return (await response.blob()) as unknown as TData;
     }
   } catch (e) {
-    let errorObject: Error = {
+    const errorObject: Error = {
       name: 'unknown' as const,
       message:
         e instanceof Error ? `Network error (${e.message})` : 'Network error',
