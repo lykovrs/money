@@ -4,10 +4,14 @@ import {navigationItems} from "../config/navigation";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
+import {useUsersControllerMe} from "../api/visualiserApiComponents";
 
 export default function Header() {
   const pathname = usePathname();
+  const {data, error, isFetched} = useUsersControllerMe({})
 
+
+  console.log('user me =>>', data, error, isFetched)
   return (
     <header
       className='sticky flex align-middle items-center bg-purple-100 text-white h-[82px] font-medium text-lg pr-16 pl-16'>

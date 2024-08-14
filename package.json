@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "lint": "nx run-many --target=lint --all"
+    "lint": "nx run-many --target=lint --all",
+    "generate": "cd apps/front && npx openapi-codegen gen api"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@tanstack/react-query-devtools": "^5.51.23",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "clsx": "^2.1.1",
     "joi": "^17.13.3",
@@ -48,6 +50,8 @@
     "@nx/web": "19.5.7",
     "@nx/webpack": "19.5.7",
     "@nx/workspace": "19.5.7",
+    "@openapi-codegen/cli": "^2.0.2",
+    "@openapi-codegen/typescript": "^8.0.2",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",

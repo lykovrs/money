@@ -1,6 +1,9 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 
+
 export default function Index() {
+
+  console.log()
   /*
    * Replace the elements below with your own.
    *

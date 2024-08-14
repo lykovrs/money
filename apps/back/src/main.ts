@@ -9,6 +9,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Dream Visualiser')
+    .addServer('http://localhost:3001')
     .setDescription('A Dream Visualiser API')
     // .setVersion(version)
     .addBearerAuth()
