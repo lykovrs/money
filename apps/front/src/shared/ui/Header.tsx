@@ -1,8 +1,12 @@
+'use client'
 import React from "react"
 import {navigationItems} from "../config/navigation";
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
+import clsx from "clsx";
 
 export default function Header() {
+  const pathname = usePathname();
 
   return (
     <header
@@ -11,7 +15,7 @@ export default function Header() {
         <div className="">
           <ul className="flex align-middle items-center gap-x-1">
             {navigationItems.map(({id, title, path}) => {
-              return <li key={id} className="nav-item">
+              return <li key={id} className={clsx('hover:text-purple-60 text-purple-20', pathname === path ? 'text-purple-60' : '')}>
                 <Link href={path}>{title}</Link>
               </li>
             })}
