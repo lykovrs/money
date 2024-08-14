@@ -40,10 +40,10 @@ export default function LoginForm() {
   // backdrop-filter: blur(6px);
 
   return (
-    <div>
+    <>
       {error && <div style={{ color: 'red' }}>{error}</div>}
-      <form onSubmit={onSubmit}>
-        <Fieldset>
+      <form onSubmit={onSubmit} className="flex flex-col justify-center align-middle">
+        <Fieldset className='max-w-xl'>
           <Legend>Login user</Legend>
           <Field>
             <Label>First Name</Label>
@@ -61,9 +61,13 @@ export default function LoginForm() {
             <Label>Delivery notes</Label>
             <Textarea className="mt-1 block" name="notes" />
           </Field>
+
+          <Field className='w-full flex justify-end'>
+            <Button  className="mt-4 block" isLoading={isLoading} type={'submit'}>Submit</Button>
+          </Field>
+
         </Fieldset>
-        <Button  className="mt-4 block" isLoading={isLoading} type={'submit'}>Submit</Button>
       </form>
-    </div>
+    </>
   )
 }

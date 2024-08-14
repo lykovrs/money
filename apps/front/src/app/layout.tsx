@@ -1,6 +1,7 @@
 import './global.css';
 import Header from "../shared/ui/Header";
 import Footer from "../shared/ui/Footer";
+import Providers from "./providers";
 
 export const metadata = {
   title: 'My Dreams and Achievements',
@@ -14,11 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='h-dvh flex flex-col'>
-        <Header />
-        <main className='grow pr-16 pl-16'>{children}</main>
-        <Footer />
-      </body>
+      <Providers>
+        <body className='h-dvh flex flex-col'>
+          <Header />
+          <main className='grow pr-16 pl-16'>{children}</main>
+          <Footer />
+        </body>
+      </Providers>
     </html>
   );
 }
