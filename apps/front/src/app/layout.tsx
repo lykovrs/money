@@ -15,13 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Providers>
-        <body className='h-dvh flex flex-col'>
+      <body className='h-dvh flex flex-col'>
+        <Providers>
           <Header />
           <main className='grow pr-16 pl-16'>{children}</main>
           <Footer />
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }

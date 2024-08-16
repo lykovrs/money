@@ -5,15 +5,16 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import clsx from "clsx";
 import {useUsersControllerMe} from "../api/apiComponents";
+import {useSession} from "next-auth/react";
 
 export default function Header() {
   const pathname = usePathname();
-  const {data, error, isFetched} = useUsersControllerMe({}, {
+  // const {data, error, isFetched} = useUsersControllerMe({}, {
 
-  })
+  // })
+  // const { data } = useSession()
 
-
-  console.log('user me =>>', data, error, isFetched)
+  // console.log('user me =>>', data)
   return (
     <header
       className='sticky flex align-middle items-center bg-purple-100 text-white h-[82px] font-medium text-lg pr-16 pl-16'>

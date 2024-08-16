@@ -1,19 +1,22 @@
-'use client'
+import { signIn } from "../../../auth"
 import React, {  FormEvent } from 'react'
 import {Button, Input, Label, Legend, Field, Fieldset} from "../../../shared";
 import {useAuthControllerSignin, } from "../../../shared/api/apiComponents";
 
 export default function LoginForm() {
-  const {mutateAsync, error, isError} = useAuthControllerSignin()
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-      const formData  = new FormData(event.currentTarget)
-      await mutateAsync({body: {username: formData.get('username'), password: formData.get('password')} as unknown as undefined}, {})
-  }
-
   return (
-      <form onSubmit={onSubmit} className="flex flex-col justify-center align-middle">
+    <form
+      action={async (formData) => {
+        "use server"
+        try {
+          const result = await signIn("credentials", formData, {
+            redirectTo: '/'
+          })
+        } catch (e) {
+          debugger
+        }
+      }}
+     className="flex flex-col justify-center align-middle">
         <Fieldset className='max-w-xl'>
           <Legend>Login user</Legend>
           <Field>

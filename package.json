@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "nx run-many --target=lint --all",
-    "generate": "cd apps/front && npx openapi-codegen gen api"
+    "generate": "cd apps/front && npx openapi-codegen gen api",
+    "debug:front": "npx nx debug front",
+    "debug:back": "npx nx serve back"
   },
   "private": true,
   "dependencies": {
@@ -17,6 +19,7 @@
     "@nestjs/platform-express": "^10.0.2",
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/typeorm": "^10.0.2",
+    "@next/env": "^14.2.5",
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
     "axios": "^1.6.0",
@@ -27,6 +30,7 @@
     "joi": "^17.13.3",
     "nest-winston": "^1.9.7",
     "next": "14.2.3",
+    "next-auth": "^5.0.0-beta.20",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.12.0",

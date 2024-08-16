@@ -5,6 +5,12 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    
+    "debug": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/front",
+        "command": "NODE_OPTIONS='--inspect' next dev"
+      }
+    }
   }
 }
