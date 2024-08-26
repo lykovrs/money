@@ -1,0 +1,50 @@
+version: '3.9'
+services:
+  backend:
+    container_name: money-dog-backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: money-dog-backend
+    ports:
+      - 4000:3000
+    env_file:
+      - .env
+    networks:
+      - backend
+    restart: on-failure
+  frontend:
+    container_name: money-dog-frontend
+    build:
+      context: frontend_old
+      dockerfile: Dockerfile
+    image: money-dog-frontend
+    ports:
+      - 4001:80
+    networks:
+      - frontend
+    restart: on-failure
+  postgres:
+    container_name: money-dog-postgres
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: on-failure
+  adminer:
+    container_name: money-dog-adminer
+    image: adminer
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+    restart: on-failure
+volumes:
+  postgres_data:
+
+networks:
+  frontend:
+  backend:

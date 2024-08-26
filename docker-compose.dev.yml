@@ -1,0 +1,67 @@
+version: '3.9'
+services:
+  backend:
+    container_name: money-backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+      target: development
+    command: npm run start:dev
+    image: money-backend
+    ports:
+      - 4000:3000
+    env_file:
+      - .env.development.local
+    networks:
+      - backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  frontend:
+    container_name: money-frontend-dev
+    environment:
+      - API=http://localhost:4000/
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+      target: builder
+    command: npm run dev
+    image: money-dev-frontend
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+    restart: unless-stopped
+    env_file:
+      - .env.development.local
+
+  postgres:
+    container_name: money-postgres
+    image: postgres
+    env_file:
+      - .env.development.local
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+  adminer:
+    container_name: money-dev-adminer
+    image: adminer
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+    restart: unless-stopped
+volumes:
+  postgres_data:
+
+networks:
+  frontend:
+  backend:
