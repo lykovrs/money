@@ -8,9 +8,9 @@ export default function AchievementsPage() {
   return (
     <section className="flex justify-center align-middle h-full">
       <h3>Achievements Page</h3>
-      {/* {data.map((wish) => {
-        return <p key={wish.id}>{wish.title}</p>;
-      }} */}
+      {data?.map(({ id, description, name, image }) => {
+        return <p key={id}>{name}</p>;
+      })}
     </section>
   );
 }

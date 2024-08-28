@@ -123,6 +123,37 @@ export type CreateAchievementDto = {
     [key: string]: unknown;
 };
 
+export type Achievement = {
+    /**
+     * Уникальный идентификатор
+     */
+    id: number;
+    /**
+     * дата создания, тип значения Date
+     */
+    createdAt: string;
+    /**
+     * дата изменения, тип значения Date
+     */
+    updatedAt: string;
+    /**
+     * имя пользователя
+     */
+    name: string;
+    /**
+     * ссылка на изображение достижения
+     */
+    image?: string;
+    /**
+     * ссылка автора достижения
+     */
+    owner: User;
+    /**
+     * описание достижения
+     */
+    description?: string;
+};
+
 export type UpdateAchievementDto = {
     [key: string]: unknown;
 };
@@ -247,34 +278,34 @@ export type AchievementsControllerCreateData = {
     requestBody: CreateAchievementDto;
 };
 
-export type AchievementsControllerCreateResponse = unknown;
+export type AchievementsControllerCreateResponse = Achievement;
 
-export type AchievementsControllerFindLastResponse = unknown;
+export type AchievementsControllerFindLastResponse = Array<Achievement>;
 
 export type AchievementsControllerFindOneData = {
     id: string;
 };
 
-export type AchievementsControllerFindOneResponse = unknown;
+export type AchievementsControllerFindOneResponse = Achievement;
 
 export type AchievementsControllerUpdateData = {
     id: string;
     requestBody: UpdateAchievementDto;
 };
 
-export type AchievementsControllerUpdateResponse = unknown;
+export type AchievementsControllerUpdateResponse = Achievement;
 
 export type AchievementsControllerRemoveData = {
     id: string;
 };
 
-export type AchievementsControllerRemoveResponse = unknown;
+export type AchievementsControllerRemoveResponse = Achievement;
 
 export type AchievementsControllerCopyData = {
     id: string;
 };
 
-export type AchievementsControllerCopyResponse = unknown;
+export type AchievementsControllerCopyResponse = Achievement;
 
 export type $OpenApiTs = {
     '/signup': {
@@ -469,14 +500,20 @@ export type $OpenApiTs = {
         post: {
             req: AchievementsControllerCreateData;
             res: {
-                201: unknown;
+                /**
+                 * Создание достижения
+                 */
+                200: Achievement;
             };
         };
     };
     '/achievement/last': {
         get: {
             res: {
-                200: unknown;
+                /**
+                 * Последние достижения
+                 */
+                200: Array<Achievement>;
             };
         };
     };
@@ -484,19 +521,28 @@ export type $OpenApiTs = {
         get: {
             req: AchievementsControllerFindOneData;
             res: {
-                200: unknown;
+                /**
+                 * Получение достижения
+                 */
+                200: Achievement;
             };
         };
         patch: {
             req: AchievementsControllerUpdateData;
             res: {
-                200: unknown;
+                /**
+                 * Обновление достижения
+                 */
+                200: Achievement;
             };
         };
         delete: {
             req: AchievementsControllerRemoveData;
             res: {
-                200: unknown;
+                /**
+                 * Удаление достижения
+                 */
+                200: Achievement;
             };
         };
     };
@@ -504,7 +550,10 @@ export type $OpenApiTs = {
         post: {
             req: AchievementsControllerCopyData;
             res: {
-                201: unknown;
+                /**
+                 * Копирование достижения
+                 */
+                200: Achievement;
             };
         };
     };

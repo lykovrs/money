@@ -50,13 +50,13 @@ export const $User = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-28T13:18:00.174Z'
+            example: '2024-08-28T14:41:55.250Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-28T13:18:00.174Z'
+            example: '2024-08-28T14:41:55.250Z'
         },
         username: {
             type: 'string',
@@ -137,13 +137,13 @@ export const $Wish = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-28T13:18:00.174Z'
+            example: '2024-08-28T14:41:55.250Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-28T13:18:00.174Z'
+            example: '2024-08-28T14:41:55.250Z'
         }
     },
     required: ['id', 'createdAt', 'updatedAt']
@@ -190,6 +190,61 @@ export const $CreateOfferDto = {
 export const $CreateAchievementDto = {
     type: 'object',
     properties: {}
+} as const;
+
+export const $Achievement = {
+    type: 'object',
+    properties: {
+        id: {
+            type: 'number',
+            description: 'Уникальный идентификатор',
+            example: '1'
+        },
+        createdAt: {
+            format: 'date-time',
+            type: 'string',
+            description: 'дата создания, тип значения Date',
+            example: '2024-08-28T14:41:55.250Z'
+        },
+        updatedAt: {
+            format: 'date-time',
+            type: 'string',
+            description: 'дата изменения, тип значения Date',
+            example: '2024-08-28T14:41:55.250Z'
+        },
+        name: {
+            type: 'string',
+            description: 'имя пользователя',
+            example: 'Пробежал 100 километров',
+            minimum: 250,
+            maximum: 1
+        },
+        image: {
+            type: 'string',
+            description: 'ссылка на изображение достижения',
+            example: 'https://example.com/achievement.png',
+            minimum: 1,
+            maximum: 1024,
+            default: ''
+        },
+        owner: {
+            description: 'ссылка автора достижения',
+            allOf: [
+                {
+                    '$ref': '#/components/schemas/User'
+                }
+            ]
+        },
+        description: {
+            type: 'string',
+            description: 'описание достижения',
+            example: 'Продвинулся на 100 километров за последний месяц',
+            minimum: 1,
+            maximum: 1024,
+            default: ''
+        }
+    },
+    required: ['id', 'createdAt', 'updatedAt', 'name', 'owner']
 } as const;
 
 export const $UpdateAchievementDto = {

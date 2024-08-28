@@ -361,7 +361,7 @@ export class AchievementService {
     /**
      * @param data The data for the request.
      * @param data.requestBody
-     * @returns unknown
+     * @returns Achievement Создание достижения
      * @throws ApiError
      */
     public static achievementsControllerCreate(data: AchievementsControllerCreateData): CancelablePromise<AchievementsControllerCreateResponse> {
@@ -374,7 +374,7 @@ export class AchievementService {
     }
     
     /**
-     * @returns unknown
+     * @returns Achievement Последние достижения
      * @throws ApiError
      */
     public static achievementsControllerFindLast(): CancelablePromise<AchievementsControllerFindLastResponse> {
@@ -387,7 +387,7 @@ export class AchievementService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Achievement Получение достижения
      * @throws ApiError
      */
     public static achievementsControllerFindOne(data: AchievementsControllerFindOneData): CancelablePromise<AchievementsControllerFindOneResponse> {
@@ -404,7 +404,7 @@ export class AchievementService {
      * @param data The data for the request.
      * @param data.id
      * @param data.requestBody
-     * @returns unknown
+     * @returns Achievement Обновление достижения
      * @throws ApiError
      */
     public static achievementsControllerUpdate(data: AchievementsControllerUpdateData): CancelablePromise<AchievementsControllerUpdateResponse> {
@@ -422,7 +422,7 @@ export class AchievementService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Achievement Удаление достижения
      * @throws ApiError
      */
     public static achievementsControllerRemove(data: AchievementsControllerRemoveData): CancelablePromise<AchievementsControllerRemoveResponse> {
@@ -438,7 +438,7 @@ export class AchievementService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Achievement Копирование достижения
      * @throws ApiError
      */
     public static achievementsControllerCopy(data: AchievementsControllerCopyData): CancelablePromise<AchievementsControllerCopyResponse> {
