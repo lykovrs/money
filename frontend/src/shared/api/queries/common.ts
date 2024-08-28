@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.0 
 
 import { UseQueryResult } from "@tanstack/react-query";
-import { AuthService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
+import { AchievementService, AuthService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
 export type UsersServiceUsersControllerMeDefaultResponse = Awaited<ReturnType<typeof UsersService.usersControllerMe>>;
 export type UsersServiceUsersControllerMeQueryResult<TData = UsersServiceUsersControllerMeDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
 export const useUsersServiceUsersControllerMeKey = "UsersServiceUsersControllerMe";
@@ -56,6 +56,16 @@ export const useOffersServiceOffersControllerFindOneKey = "OffersServiceOffersCo
 export const UseOffersServiceOffersControllerFindOneKeyFn = ({ id }: {
   id: string;
 }, queryKey?: Array<unknown>) => [useOffersServiceOffersControllerFindOneKey, ...(queryKey ?? [{ id }])];
+export type AchievementServiceAchievementsControllerFindLastDefaultResponse = Awaited<ReturnType<typeof AchievementService.achievementsControllerFindLast>>;
+export type AchievementServiceAchievementsControllerFindLastQueryResult<TData = AchievementServiceAchievementsControllerFindLastDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useAchievementServiceAchievementsControllerFindLastKey = "AchievementServiceAchievementsControllerFindLast";
+export const UseAchievementServiceAchievementsControllerFindLastKeyFn = (queryKey?: Array<unknown>) => [useAchievementServiceAchievementsControllerFindLastKey, ...(queryKey ?? [])];
+export type AchievementServiceAchievementsControllerFindOneDefaultResponse = Awaited<ReturnType<typeof AchievementService.achievementsControllerFindOne>>;
+export type AchievementServiceAchievementsControllerFindOneQueryResult<TData = AchievementServiceAchievementsControllerFindOneDefaultResponse, TError = unknown> = UseQueryResult<TData, TError>;
+export const useAchievementServiceAchievementsControllerFindOneKey = "AchievementServiceAchievementsControllerFindOne";
+export const UseAchievementServiceAchievementsControllerFindOneKeyFn = ({ id }: {
+  id: string;
+}, queryKey?: Array<unknown>) => [useAchievementServiceAchievementsControllerFindOneKey, ...(queryKey ?? [{ id }])];
 export type AuthServiceAuthControllerSignUpMutationResult = Awaited<ReturnType<typeof AuthService.authControllerSignUp>>;
 export type AuthServiceAuthControllerSigninMutationResult = Awaited<ReturnType<typeof AuthService.authControllerSignin>>;
 export type UsersServiceUsersControllerFindMutationResult = Awaited<ReturnType<typeof UsersService.usersControllerFind>>;
@@ -63,8 +73,12 @@ export type WishesServiceWishesControllerCreateMutationResult = Awaited<ReturnTy
 export type WishesServiceWishesControllerCopyMutationResult = Awaited<ReturnType<typeof WishesService.wishesControllerCopy>>;
 export type WishlistlistsServiceWishlistsControllerCreateMutationResult = Awaited<ReturnType<typeof WishlistlistsService.wishlistsControllerCreate>>;
 export type OffersServiceOffersControllerCreateMutationResult = Awaited<ReturnType<typeof OffersService.offersControllerCreate>>;
+export type AchievementServiceAchievementsControllerCreateMutationResult = Awaited<ReturnType<typeof AchievementService.achievementsControllerCreate>>;
+export type AchievementServiceAchievementsControllerCopyMutationResult = Awaited<ReturnType<typeof AchievementService.achievementsControllerCopy>>;
 export type UsersServiceUsersControllerUpdateMeMutationResult = Awaited<ReturnType<typeof UsersService.usersControllerUpdateMe>>;
 export type WishesServiceWishesControllerUpdateMutationResult = Awaited<ReturnType<typeof WishesService.wishesControllerUpdate>>;
 export type WishlistlistsServiceWishlistsControllerUpdateMutationResult = Awaited<ReturnType<typeof WishlistlistsService.wishlistsControllerUpdate>>;
+export type AchievementServiceAchievementsControllerUpdateMutationResult = Awaited<ReturnType<typeof AchievementService.achievementsControllerUpdate>>;
 export type WishesServiceWishesControllerRemoveMutationResult = Awaited<ReturnType<typeof WishesService.wishesControllerRemove>>;
 export type WishlistlistsServiceWishlistsControllerRemoveMutationResult = Awaited<ReturnType<typeof WishlistlistsService.wishlistsControllerRemove>>;
+export type AchievementServiceAchievementsControllerRemoveMutationResult = Awaited<ReturnType<typeof AchievementService.achievementsControllerRemove>>;

@@ -50,13 +50,13 @@ export const $User = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-26T12:03:08.237Z'
+            example: '2024-08-28T13:18:00.174Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-26T12:03:08.237Z'
+            example: '2024-08-28T13:18:00.174Z'
         },
         username: {
             type: 'string',
@@ -137,13 +137,13 @@ export const $Wish = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-26T12:03:08.237Z'
+            example: '2024-08-28T13:18:00.174Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-26T12:03:08.237Z'
+            example: '2024-08-28T13:18:00.174Z'
         }
     },
     required: ['id', 'createdAt', 'updatedAt']
@@ -183,6 +183,16 @@ export const $UpdateWishlistDto = {
 } as const;
 
 export const $CreateOfferDto = {
+    type: 'object',
+    properties: {}
+} as const;
+
+export const $CreateAchievementDto = {
+    type: 'object',
+    properties: {}
+} as const;
+
+export const $UpdateAchievementDto = {
     type: 'object',
     properties: {}
 } as const;

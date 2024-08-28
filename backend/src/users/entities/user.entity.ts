@@ -19,6 +19,7 @@ import {
   USERNAME_MIN_LENGTH,
   USER_AVATAR_DEFAULT_LINK,
 } from '../users.constants';
+import { Achievement } from 'src/achievements/entities/achievement.entity';
 
 // Схема пользователя
 @Entity()
@@ -84,6 +85,11 @@ export class User extends BaseAbstractEntity {
   @OneToMany(() => Wish, (wish) => wish.owner)
   @JoinColumn()
   wishes: Wish; // список желаемых подарков
+
+  @IsNotEmpty()
+  @OneToMany(() => Achievement, (achievement) => achievement.owner)
+  @JoinColumn()
+  achievement: Achievement; // список достижений пользователя
 
   @OneToMany(() => Offer, (offer) => offer.user)
   @JoinColumn()

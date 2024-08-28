@@ -8,6 +8,7 @@ import { WishesModule } from './wishes/wishes.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { OffersModule } from './offers/offers.module';
 import { AuthModule } from './auth/auth.module';
+import { AchievementsModule } from './achievements/achievements.module';
 import configuration, { schema } from './configuration';
 
 @Module({
@@ -49,6 +50,7 @@ import configuration, { schema } from './configuration';
     WishesModule,
     WishlistsModule,
     OffersModule,
+    AchievementsModule,
   ],
 })
 export class AppModule {}

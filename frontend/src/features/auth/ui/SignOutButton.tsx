@@ -1,14 +1,16 @@
-// import { signOut } from "../../../auth"
+import { Form } from "react-router-dom";
+import { authProvider } from "../../../app/auth";
 
 export function SignOut() {
+  const handleLogout = async () => {
+    await authProvider.signout();
+  };
+
   return (
-    <form
-      // action={async () => {
-      //   // await signOut()
-      
-      // }}
+    <Form
+      action={handleLogout as unknown as string}
     >
       <button type="submit">Sign Out</button>
-    </form>
+    </Form>
   )
 }

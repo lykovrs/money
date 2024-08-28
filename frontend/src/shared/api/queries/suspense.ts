@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.0 
 
 import { UseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
+import { AchievementService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
 import * as Common from "./common";
 export const useUsersServiceUsersControllerMeSuspense = <TData = Common.UsersServiceUsersControllerMeDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseUsersServiceUsersControllerMeKeyFn(queryKey), queryFn: () => UsersService.usersControllerMe() as TData, ...options });
 export const useUsersServiceUsersControllerGetMyWishesSuspense = <TData = Common.UsersServiceUsersControllerGetMyWishesDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseUsersServiceUsersControllerGetMyWishesKeyFn(queryKey), queryFn: () => UsersService.usersControllerGetMyWishes() as TData, ...options });
@@ -24,3 +24,7 @@ export const useOffersServiceOffersControllerFindAllSuspense = <TData = Common.O
 export const useOffersServiceOffersControllerFindOneSuspense = <TData = Common.OffersServiceOffersControllerFindOneDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ id }: {
   id: string;
 }, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseOffersServiceOffersControllerFindOneKeyFn({ id }, queryKey), queryFn: () => OffersService.offersControllerFindOne({ id }) as TData, ...options });
+export const useAchievementServiceAchievementsControllerFindLastSuspense = <TData = Common.AchievementServiceAchievementsControllerFindLastDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAchievementServiceAchievementsControllerFindLastKeyFn(queryKey), queryFn: () => AchievementService.achievementsControllerFindLast() as TData, ...options });
+export const useAchievementServiceAchievementsControllerFindOneSuspense = <TData = Common.AchievementServiceAchievementsControllerFindOneDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ id }: {
+  id: string;
+}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useSuspenseQuery<TData, TError>({ queryKey: Common.UseAchievementServiceAchievementsControllerFindOneKeyFn({ id }, queryKey), queryFn: () => AchievementService.achievementsControllerFindOne({ id }) as TData, ...options });

@@ -1,7 +1,7 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.0 
 
 import { type QueryClient } from "@tanstack/react-query";
-import { OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
+import { AchievementService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
 import * as Common from "./common";
 export const prefetchUseUsersServiceUsersControllerMe = (queryClient: QueryClient) => queryClient.prefetchQuery({ queryKey: Common.UseUsersServiceUsersControllerMeKeyFn(), queryFn: () => UsersService.usersControllerMe() });
 export const prefetchUseUsersServiceUsersControllerGetMyWishes = (queryClient: QueryClient) => queryClient.prefetchQuery({ queryKey: Common.UseUsersServiceUsersControllerGetMyWishesKeyFn(), queryFn: () => UsersService.usersControllerGetMyWishes() });
@@ -24,3 +24,7 @@ export const prefetchUseOffersServiceOffersControllerFindAll = (queryClient: Que
 export const prefetchUseOffersServiceOffersControllerFindOne = (queryClient: QueryClient, { id }: {
   id: string;
 }) => queryClient.prefetchQuery({ queryKey: Common.UseOffersServiceOffersControllerFindOneKeyFn({ id }), queryFn: () => OffersService.offersControllerFindOne({ id }) });
+export const prefetchUseAchievementServiceAchievementsControllerFindLast = (queryClient: QueryClient) => queryClient.prefetchQuery({ queryKey: Common.UseAchievementServiceAchievementsControllerFindLastKeyFn(), queryFn: () => AchievementService.achievementsControllerFindLast() });
+export const prefetchUseAchievementServiceAchievementsControllerFindOne = (queryClient: QueryClient, { id }: {
+  id: string;
+}) => queryClient.prefetchQuery({ queryKey: Common.UseAchievementServiceAchievementsControllerFindOneKeyFn({ id }), queryFn: () => AchievementService.achievementsControllerFindOne({ id }) });

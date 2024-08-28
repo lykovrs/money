@@ -15,6 +15,9 @@ export enum ErrorCode {
   WishlistNotFound = 407,
   WishlistCanNotEdit = 408,
   WishlistCanNotDelete = 409,
+  AchievementNotFound = 503,
+  AchievementCanEditOwn = 504,
+  AchievementCanNotDelete = 506,
 }
 
 export const code2message = new Map<ErrorCode, string>([
@@ -26,6 +29,10 @@ export const code2message = new Map<ErrorCode, string>([
     'User with current email or username already exists',
   ],
   [ErrorCode.UserNotFound, 'User not found'],
+  // achievement
+  [ErrorCode.AchievementNotFound, 'Achievement not found'],
+  [ErrorCode.AchievementCanEditOwn, 'You can edit only your achievement'],
+  [ErrorCode.AchievementCanNotDelete, 'You can delete only your achievement'],
   // wish
   [ErrorCode.WishNotFound, 'Wish not found'],
   [ErrorCode.WishCanEditOwn, 'You can edit only your wish'],
@@ -49,6 +56,9 @@ export const code2status = new Map<ErrorCode, HttpStatus>([
   [ErrorCode.LoginOrPasswordIncorrect, HttpStatus.BAD_REQUEST],
   [ErrorCode.UserAlreadyExists, HttpStatus.BAD_REQUEST],
   [ErrorCode.UserNotFound, HttpStatus.NOT_FOUND],
+  [ErrorCode.AchievementNotFound, HttpStatus.NOT_FOUND],
+  [ErrorCode.AchievementCanEditOwn, HttpStatus.FORBIDDEN],
+  [ErrorCode.AchievementCanEditOwn, HttpStatus.FORBIDDEN],
   [ErrorCode.WishNotFound, HttpStatus.NOT_FOUND],
   [ErrorCode.WishCanEditOwn, HttpStatus.FORBIDDEN],
   [ErrorCode.WishCanNotEditWithOffers, HttpStatus.FORBIDDEN],

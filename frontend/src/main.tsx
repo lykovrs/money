@@ -1,11 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './app/page'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './app/page';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-
-    sdfsd
-  </StrictMode>,
-)
+  </StrictMode>
+);

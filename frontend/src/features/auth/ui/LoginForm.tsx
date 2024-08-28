@@ -1,21 +1,21 @@
 // import { signIn } from "../../../auth"
+import { Form } from "react-router-dom";
 import {Button, Input, Label, Legend, Field, Fieldset} from "../../../shared";
-// import {useAuthControllerSignin, } from "../../../shared/api/apiComponents";
 
-export default function LoginForm() {
+type Props = {
+  from: string;
+  isLoggingIn: boolean;
+  error?: string | null;
+}
+
+export default function LoginForm({from, isLoggingIn, error}: Props) {
   return (
-    <form
-      // action={async (formData: Object) => {
-      //   try {
-      //     // const result = await signIn("credentials", formData, {
-      //     //   redirectTo: '/'
-      //     // })
-      //     return Promise.resolve('Success')
-      //   } catch (e) {
-      //     debugger
-      //   }
-      // }}
+    <Form method="post" replace
      className="flex flex-col justify-center align-middle">
+     <p>You must log in to view the page at {from}</p>
+     {error ? (
+      <p style={{ color: "red" }}>{error}</p>
+    ) : null}
         <Fieldset className='max-w-xl'>
           <Legend>Login user</Legend>
           <Field>
@@ -28,9 +28,9 @@ export default function LoginForm() {
           </Field>
 
           <Field className='w-full flex justify-end'>
-            <Button  className="mt-4 block" isLoading={undefined} type={'submit'}>Submit</Button>
+            <Button  className="mt-4 block" isLoading={isLoggingIn} type={'submit'}>Submit</Button>
           </Field>
         </Fieldset>
-      </form>
+      </Form>
   )
 }

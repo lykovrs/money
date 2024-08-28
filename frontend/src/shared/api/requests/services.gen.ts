@@ -3,7 +3,7 @@
 import type { CancelablePromise } from './core/CancelablePromise';
 import { OpenAPI } from './core/OpenAPI';
 import { request as __request } from './core/request';
-import type { AuthControllerSignUpData, AuthControllerSignUpResponse, AuthControllerSigninData, AuthControllerSigninResponse, UsersControllerMeResponse, UsersControllerUpdateMeData, UsersControllerUpdateMeResponse, UsersControllerGetMyWishesResponse, UsersControllerFindOneByNameData, UsersControllerFindOneByNameResponse, UsersControllerFindWishesByNameData, UsersControllerFindWishesByNameResponse, UsersControllerFindData, UsersControllerFindResponse, WishesControllerCreateData, WishesControllerCreateResponse, WishesControllerFindLastResponse, WishesControllerFindTopResponse, WishesControllerFindOneData, WishesControllerFindOneResponse, WishesControllerUpdateData, WishesControllerUpdateResponse, WishesControllerRemoveData, WishesControllerRemoveResponse, WishesControllerCopyData, WishesControllerCopyResponse, WishlistsControllerCreateData, WishlistsControllerCreateResponse, WishlistsControllerFindAllResponse, WishlistsControllerFindOneData, WishlistsControllerFindOneResponse, WishlistsControllerUpdateData, WishlistsControllerUpdateResponse, WishlistsControllerRemoveData, WishlistsControllerRemoveResponse, OffersControllerCreateData, OffersControllerCreateResponse, OffersControllerFindAllResponse, OffersControllerFindOneData, OffersControllerFindOneResponse } from './types.gen';
+import type { AuthControllerSignUpData, AuthControllerSignUpResponse, AuthControllerSigninData, AuthControllerSigninResponse, UsersControllerMeResponse, UsersControllerUpdateMeData, UsersControllerUpdateMeResponse, UsersControllerGetMyWishesResponse, UsersControllerFindOneByNameData, UsersControllerFindOneByNameResponse, UsersControllerFindWishesByNameData, UsersControllerFindWishesByNameResponse, UsersControllerFindData, UsersControllerFindResponse, WishesControllerCreateData, WishesControllerCreateResponse, WishesControllerFindLastResponse, WishesControllerFindTopResponse, WishesControllerFindOneData, WishesControllerFindOneResponse, WishesControllerUpdateData, WishesControllerUpdateResponse, WishesControllerRemoveData, WishesControllerRemoveResponse, WishesControllerCopyData, WishesControllerCopyResponse, WishlistsControllerCreateData, WishlistsControllerCreateResponse, WishlistsControllerFindAllResponse, WishlistsControllerFindOneData, WishlistsControllerFindOneResponse, WishlistsControllerUpdateData, WishlistsControllerUpdateResponse, WishlistsControllerRemoveData, WishlistsControllerRemoveResponse, OffersControllerCreateData, OffersControllerCreateResponse, OffersControllerFindAllResponse, OffersControllerFindOneData, OffersControllerFindOneResponse, AchievementsControllerCreateData, AchievementsControllerCreateResponse, AchievementsControllerFindLastResponse, AchievementsControllerFindOneData, AchievementsControllerFindOneResponse, AchievementsControllerUpdateData, AchievementsControllerUpdateResponse, AchievementsControllerRemoveData, AchievementsControllerRemoveResponse, AchievementsControllerCopyData, AchievementsControllerCopyResponse } from './types.gen';
 
 export class AuthService {
     /**
@@ -349,6 +349,102 @@ export class OffersService {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/offers/{id}',
+            path: {
+                id: data.id
+            }
+        });
+    }
+    
+}
+
+export class AchievementService {
+    /**
+     * @param data The data for the request.
+     * @param data.requestBody
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerCreate(data: AchievementsControllerCreateData): CancelablePromise<AchievementsControllerCreateResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/achievement',
+            body: data.requestBody,
+            mediaType: 'application/json'
+        });
+    }
+    
+    /**
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerFindLast(): CancelablePromise<AchievementsControllerFindLastResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/achievement/last'
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerFindOne(data: AchievementsControllerFindOneData): CancelablePromise<AchievementsControllerFindOneResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/achievement/{id}',
+            path: {
+                id: data.id
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @param data.requestBody
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerUpdate(data: AchievementsControllerUpdateData): CancelablePromise<AchievementsControllerUpdateResponse> {
+        return __request(OpenAPI, {
+            method: 'PATCH',
+            url: '/achievement/{id}',
+            path: {
+                id: data.id
+            },
+            body: data.requestBody,
+            mediaType: 'application/json'
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerRemove(data: AchievementsControllerRemoveData): CancelablePromise<AchievementsControllerRemoveResponse> {
+        return __request(OpenAPI, {
+            method: 'DELETE',
+            url: '/achievement/{id}',
+            path: {
+                id: data.id
+            }
+        });
+    }
+    
+    /**
+     * @param data The data for the request.
+     * @param data.id
+     * @returns unknown
+     * @throws ApiError
+     */
+    public static achievementsControllerCopy(data: AchievementsControllerCopyData): CancelablePromise<AchievementsControllerCopyResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/achievement/{id}/copy',
             path: {
                 id: data.id
             }

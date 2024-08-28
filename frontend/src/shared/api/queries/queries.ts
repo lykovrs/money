@@ -1,8 +1,8 @@
 // generated with @7nohe/openapi-react-query-codegen@1.6.0 
 
 import { UseMutationOptions, UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
-import { AuthService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
-import { CreateOfferDto, CreateUserDto, CreateWishDto, CreateWishlistDto, FindUserDto, UpdateUserDto, UpdateWishDto, UpdateWishlistDto } from "../requests/types.gen";
+import { AchievementService, AuthService, OffersService, UsersService, WishesService, WishlistlistsService } from "../requests/services.gen";
+import { CreateAchievementDto, CreateOfferDto, CreateUserDto, CreateWishDto, CreateWishlistDto, FindUserDto, UpdateAchievementDto, UpdateUserDto, UpdateWishDto, UpdateWishlistDto } from "../requests/types.gen";
 import * as Common from "./common";
 export const useUsersServiceUsersControllerMe = <TData = Common.UsersServiceUsersControllerMeDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseUsersServiceUsersControllerMeKeyFn(queryKey), queryFn: () => UsersService.usersControllerMe() as TData, ...options });
 export const useUsersServiceUsersControllerGetMyWishes = <TData = Common.UsersServiceUsersControllerGetMyWishesDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseUsersServiceUsersControllerGetMyWishesKeyFn(queryKey), queryFn: () => UsersService.usersControllerGetMyWishes() as TData, ...options });
@@ -25,6 +25,10 @@ export const useOffersServiceOffersControllerFindAll = <TData = Common.OffersSer
 export const useOffersServiceOffersControllerFindOne = <TData = Common.OffersServiceOffersControllerFindOneDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ id }: {
   id: string;
 }, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseOffersServiceOffersControllerFindOneKeyFn({ id }, queryKey), queryFn: () => OffersService.offersControllerFindOne({ id }) as TData, ...options });
+export const useAchievementServiceAchievementsControllerFindLast = <TData = Common.AchievementServiceAchievementsControllerFindLastDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>(queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAchievementServiceAchievementsControllerFindLastKeyFn(queryKey), queryFn: () => AchievementService.achievementsControllerFindLast() as TData, ...options });
+export const useAchievementServiceAchievementsControllerFindOne = <TData = Common.AchievementServiceAchievementsControllerFindOneDefaultResponse, TError = unknown, TQueryKey extends Array<unknown> = unknown[]>({ id }: {
+  id: string;
+}, queryKey?: TQueryKey, options?: Omit<UseQueryOptions<TData, TError>, "queryKey" | "queryFn">) => useQuery<TData, TError>({ queryKey: Common.UseAchievementServiceAchievementsControllerFindOneKeyFn({ id }, queryKey), queryFn: () => AchievementService.achievementsControllerFindOne({ id }) as TData, ...options });
 export const useAuthServiceAuthControllerSignUp = <TData = Common.AuthServiceAuthControllerSignUpMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
   requestBody: CreateUserDto;
 }, TContext>, "mutationFn">) => useMutation<TData, TError, {
@@ -60,6 +64,16 @@ export const useOffersServiceOffersControllerCreate = <TData = Common.OffersServ
 }, TContext>, "mutationFn">) => useMutation<TData, TError, {
   requestBody: CreateOfferDto;
 }, TContext>({ mutationFn: ({ requestBody }) => OffersService.offersControllerCreate({ requestBody }) as unknown as Promise<TData>, ...options });
+export const useAchievementServiceAchievementsControllerCreate = <TData = Common.AchievementServiceAchievementsControllerCreateMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
+  requestBody: CreateAchievementDto;
+}, TContext>, "mutationFn">) => useMutation<TData, TError, {
+  requestBody: CreateAchievementDto;
+}, TContext>({ mutationFn: ({ requestBody }) => AchievementService.achievementsControllerCreate({ requestBody }) as unknown as Promise<TData>, ...options });
+export const useAchievementServiceAchievementsControllerCopy = <TData = Common.AchievementServiceAchievementsControllerCopyMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
+  id: string;
+}, TContext>, "mutationFn">) => useMutation<TData, TError, {
+  id: string;
+}, TContext>({ mutationFn: ({ id }) => AchievementService.achievementsControllerCopy({ id }) as unknown as Promise<TData>, ...options });
 export const useUsersServiceUsersControllerUpdateMe = <TData = Common.UsersServiceUsersControllerUpdateMeMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
   requestBody: UpdateUserDto;
 }, TContext>, "mutationFn">) => useMutation<TData, TError, {
@@ -79,6 +93,13 @@ export const useWishlistlistsServiceWishlistsControllerUpdate = <TData = Common.
   id: string;
   requestBody: UpdateWishlistDto;
 }, TContext>({ mutationFn: ({ id, requestBody }) => WishlistlistsService.wishlistsControllerUpdate({ id, requestBody }) as unknown as Promise<TData>, ...options });
+export const useAchievementServiceAchievementsControllerUpdate = <TData = Common.AchievementServiceAchievementsControllerUpdateMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
+  id: string;
+  requestBody: UpdateAchievementDto;
+}, TContext>, "mutationFn">) => useMutation<TData, TError, {
+  id: string;
+  requestBody: UpdateAchievementDto;
+}, TContext>({ mutationFn: ({ id, requestBody }) => AchievementService.achievementsControllerUpdate({ id, requestBody }) as unknown as Promise<TData>, ...options });
 export const useWishesServiceWishesControllerRemove = <TData = Common.WishesServiceWishesControllerRemoveMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
   id: string;
 }, TContext>, "mutationFn">) => useMutation<TData, TError, {
@@ -89,3 +110,8 @@ export const useWishlistlistsServiceWishlistsControllerRemove = <TData = Common.
 }, TContext>, "mutationFn">) => useMutation<TData, TError, {
   id: string;
 }, TContext>({ mutationFn: ({ id }) => WishlistlistsService.wishlistsControllerRemove({ id }) as unknown as Promise<TData>, ...options });
+export const useAchievementServiceAchievementsControllerRemove = <TData = Common.AchievementServiceAchievementsControllerRemoveMutationResult, TError = unknown, TContext = unknown>(options?: Omit<UseMutationOptions<TData, TError, {
+  id: string;
+}, TContext>, "mutationFn">) => useMutation<TData, TError, {
+  id: string;
+}, TContext>({ mutationFn: ({ id }) => AchievementService.achievementsControllerRemove({ id }) as unknown as Promise<TData>, ...options });

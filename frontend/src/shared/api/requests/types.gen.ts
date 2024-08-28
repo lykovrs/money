@@ -119,6 +119,14 @@ export type CreateOfferDto = {
     [key: string]: unknown;
 };
 
+export type CreateAchievementDto = {
+    [key: string]: unknown;
+};
+
+export type UpdateAchievementDto = {
+    [key: string]: unknown;
+};
+
 export type AuthControllerSignUpData = {
     requestBody: CreateUserDto;
 };
@@ -234,6 +242,39 @@ export type OffersControllerFindOneData = {
 };
 
 export type OffersControllerFindOneResponse = unknown;
+
+export type AchievementsControllerCreateData = {
+    requestBody: CreateAchievementDto;
+};
+
+export type AchievementsControllerCreateResponse = unknown;
+
+export type AchievementsControllerFindLastResponse = unknown;
+
+export type AchievementsControllerFindOneData = {
+    id: string;
+};
+
+export type AchievementsControllerFindOneResponse = unknown;
+
+export type AchievementsControllerUpdateData = {
+    id: string;
+    requestBody: UpdateAchievementDto;
+};
+
+export type AchievementsControllerUpdateResponse = unknown;
+
+export type AchievementsControllerRemoveData = {
+    id: string;
+};
+
+export type AchievementsControllerRemoveResponse = unknown;
+
+export type AchievementsControllerCopyData = {
+    id: string;
+};
+
+export type AchievementsControllerCopyResponse = unknown;
 
 export type $OpenApiTs = {
     '/signup': {
@@ -421,6 +462,49 @@ export type $OpenApiTs = {
             req: OffersControllerFindOneData;
             res: {
                 200: unknown;
+            };
+        };
+    };
+    '/achievement': {
+        post: {
+            req: AchievementsControllerCreateData;
+            res: {
+                201: unknown;
+            };
+        };
+    };
+    '/achievement/last': {
+        get: {
+            res: {
+                200: unknown;
+            };
+        };
+    };
+    '/achievement/{id}': {
+        get: {
+            req: AchievementsControllerFindOneData;
+            res: {
+                200: unknown;
+            };
+        };
+        patch: {
+            req: AchievementsControllerUpdateData;
+            res: {
+                200: unknown;
+            };
+        };
+        delete: {
+            req: AchievementsControllerRemoveData;
+            res: {
+                200: unknown;
+            };
+        };
+    };
+    '/achievement/{id}/copy': {
+        post: {
+            req: AchievementsControllerCopyData;
+            res: {
+                201: unknown;
             };
         };
     };
