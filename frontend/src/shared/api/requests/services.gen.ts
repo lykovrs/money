@@ -129,7 +129,7 @@ export class WishesService {
     /**
      * @param data The data for the request.
      * @param data.requestBody
-     * @returns unknown
+     * @returns Wish Мечта
      * @throws ApiError
      */
     public static wishesControllerCreate(data: WishesControllerCreateData): CancelablePromise<WishesControllerCreateResponse> {
@@ -142,7 +142,7 @@ export class WishesService {
     }
     
     /**
-     * @returns unknown
+     * @returns Wish Последние мечты
      * @throws ApiError
      */
     public static wishesControllerFindLast(): CancelablePromise<WishesControllerFindLastResponse> {
@@ -153,7 +153,7 @@ export class WishesService {
     }
     
     /**
-     * @returns unknown
+     * @returns Wish Популярные мечты
      * @throws ApiError
      */
     public static wishesControllerFindTop(): CancelablePromise<WishesControllerFindTopResponse> {
@@ -166,7 +166,7 @@ export class WishesService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Wish Мечта по идентификатору
      * @throws ApiError
      */
     public static wishesControllerFindOne(data: WishesControllerFindOneData): CancelablePromise<WishesControllerFindOneResponse> {
@@ -183,7 +183,7 @@ export class WishesService {
      * @param data The data for the request.
      * @param data.id
      * @param data.requestBody
-     * @returns unknown
+     * @returns Wish Редактирование мечты
      * @throws ApiError
      */
     public static wishesControllerUpdate(data: WishesControllerUpdateData): CancelablePromise<WishesControllerUpdateResponse> {
@@ -201,7 +201,7 @@ export class WishesService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Wish Удаление мечты
      * @throws ApiError
      */
     public static wishesControllerRemove(data: WishesControllerRemoveData): CancelablePromise<WishesControllerRemoveResponse> {
@@ -217,7 +217,7 @@ export class WishesService {
     /**
      * @param data The data for the request.
      * @param data.id
-     * @returns unknown
+     * @returns Wish Скопировать мечту
      * @throws ApiError
      */
     public static wishesControllerCopy(data: WishesControllerCopyData): CancelablePromise<WishesControllerCopyResponse> {

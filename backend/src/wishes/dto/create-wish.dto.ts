@@ -1,4 +1,6 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsArray,
   IsNumber,
   IsOptional,
   IsPositive,
@@ -13,15 +15,41 @@ export class CreateWishDto {
   @IsUrl()
   link: string; // ссылка на интернет-магазин, в котором можно приобрести подарок
 
+  @ApiProperty({
+    description: 'Изображение мечты',
+    example: [
+      'https://example.com/achievement.png',
+      'https://example.com/achievement.png',
+      'https://example.com/achievement.png',
+    ],
+    items: {
+      type: 'string',
+    },
+  })
+  @IsArray()
   @IsUrl()
   @IsOptional()
-  image?: string; // ссылка на изображение подарка
+  images?: string;
 
+  @ApiProperty({
+    description: 'Стоимость мечты',
+    example: 100,
+    required: false,
+    default: '',
+  })
   @IsNumber()
   @IsPositive()
-  price: number; // стоимость подарка
+  price: number;
 
+  @ApiProperty({
+    description: 'описание мечты',
+    example: 'Сбросить 10 кило',
+    minimum: 1,
+    maximum: 1024,
+    required: false,
+    default: '',
+  })
   @Length(1, 1024)
   @IsOptional()
-  description?: string; // строка с описанием подарка
+  description?: string;
 }

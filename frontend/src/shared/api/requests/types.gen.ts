@@ -90,6 +90,46 @@ export type Wish = {
      * дата изменения, тип значения Date
      */
     updatedAt: string;
+    /**
+     * Заголовок мечты
+     */
+    name: string;
+    /**
+     * Изображение мечты
+     */
+    images: string;
+    /**
+     * ссылка на мечту
+     */
+    link?: string;
+    /**
+     * Стоимость мечты
+     */
+    price?: number;
+    /**
+     * Cумма предварительного сбора или сумма, которую пользователи сейчас готовы скинуть на мечту
+     */
+    raised?: number;
+    /**
+     * ссылка автора мечты
+     */
+    owner: User;
+    /**
+     * Достижения, которые относятся к мечте
+     */
+    steps: Array<(string)>;
+    /**
+     * Описание подарка
+     */
+    description: string;
+    /**
+     * Массив ссылок на заявки скинуться от других пользователей
+     */
+    offers: Array<(string)>;
+    /**
+     * Счётчик тех, кто скопировал мечту себе
+     */
+    copied: number;
 };
 
 export type FindUserDto = {
@@ -100,11 +140,33 @@ export type FindUserDto = {
 };
 
 export type CreateWishDto = {
-    [key: string]: unknown;
+    /**
+     * Изображение мечты
+     */
+    images: string;
+    /**
+     * Стоимость мечты
+     */
+    price?: number;
+    /**
+     * описание мечты
+     */
+    description?: string;
 };
 
 export type UpdateWishDto = {
-    [key: string]: unknown;
+    /**
+     * Изображение мечты
+     */
+    images?: string;
+    /**
+     * Стоимость мечты
+     */
+    price?: number;
+    /**
+     * описание мечты
+     */
+    description?: string;
 };
 
 export type CreateWishlistDto = {
@@ -202,36 +264,36 @@ export type WishesControllerCreateData = {
     requestBody: CreateWishDto;
 };
 
-export type WishesControllerCreateResponse = unknown;
+export type WishesControllerCreateResponse = Wish;
 
-export type WishesControllerFindLastResponse = unknown;
+export type WishesControllerFindLastResponse = Array<Wish>;
 
-export type WishesControllerFindTopResponse = unknown;
+export type WishesControllerFindTopResponse = Array<Wish>;
 
 export type WishesControllerFindOneData = {
     id: string;
 };
 
-export type WishesControllerFindOneResponse = unknown;
+export type WishesControllerFindOneResponse = Wish;
 
 export type WishesControllerUpdateData = {
     id: string;
     requestBody: UpdateWishDto;
 };
 
-export type WishesControllerUpdateResponse = unknown;
+export type WishesControllerUpdateResponse = Wish;
 
 export type WishesControllerRemoveData = {
     id: string;
 };
 
-export type WishesControllerRemoveResponse = unknown;
+export type WishesControllerRemoveResponse = Wish;
 
 export type WishesControllerCopyData = {
     id: string;
 };
 
-export type WishesControllerCopyResponse = unknown;
+export type WishesControllerCopyResponse = Wish;
 
 export type WishlistsControllerCreateData = {
     requestBody: CreateWishlistDto;
@@ -396,21 +458,30 @@ export type $OpenApiTs = {
         post: {
             req: WishesControllerCreateData;
             res: {
-                201: unknown;
+                /**
+                 * Мечта
+                 */
+                200: Wish;
             };
         };
     };
     '/wishes/last': {
         get: {
             res: {
-                200: unknown;
+                /**
+                 * Последние мечты
+                 */
+                200: Array<Wish>;
             };
         };
     };
     '/wishes/top': {
         get: {
             res: {
-                200: unknown;
+                /**
+                 * Популярные мечты
+                 */
+                200: Array<Wish>;
             };
         };
     };
@@ -418,19 +489,28 @@ export type $OpenApiTs = {
         get: {
             req: WishesControllerFindOneData;
             res: {
-                200: unknown;
+                /**
+                 * Мечта по идентификатору
+                 */
+                200: Wish;
             };
         };
         patch: {
             req: WishesControllerUpdateData;
             res: {
-                200: unknown;
+                /**
+                 * Редактирование мечты
+                 */
+                200: Wish;
             };
         };
         delete: {
             req: WishesControllerRemoveData;
             res: {
-                200: unknown;
+                /**
+                 * Удаление мечты
+                 */
+                200: Wish;
             };
         };
     };
@@ -438,7 +518,10 @@ export type $OpenApiTs = {
         post: {
             req: WishesControllerCopyData;
             res: {
-                201: unknown;
+                /**
+                 * Скопировать мечту
+                 */
+                200: Wish;
             };
         };
     };

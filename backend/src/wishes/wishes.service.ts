@@ -117,11 +117,11 @@ export class WishesService {
     try {
       await this.wishesRepository.increment({ id }, 'copied', 1);
 
-      const { name, image, description, link, price } = originalWish;
+      const { name, images, description, link, price } = originalWish;
 
       mywish = await this.create(owner, {
         name,
-        image,
+        images,
         description,
         link,
         price,

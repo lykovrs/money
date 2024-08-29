@@ -1,6 +1,6 @@
 import { BaseAbstractEntity } from '../../BaseAbstractEntity';
 import { User } from '../../users/entities/user.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { IsOptional, IsUrl, Length } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 

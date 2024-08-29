@@ -50,13 +50,13 @@ export const $User = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
         },
         username: {
             type: 'string',
@@ -137,16 +137,86 @@ export const $Wish = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
+        },
+        name: {
+            type: 'string',
+            description: 'Заголовок мечты',
+            example: 'Построить дом',
+            minimum: 250,
+            maximum: 1
+        },
+        images: {
+            type: 'string',
+            description: 'Изображение мечты',
+            example: ['https://example.com/achievement.png', 'https://example.com/achievement.png', 'https://example.com/achievement.png'],
+            items: {
+                type: 'string'
+            }
+        },
+        link: {
+            type: 'string',
+            description: 'ссылка на мечту',
+            example: 'https://example.com/achievement',
+            minimum: 1,
+            maximum: 1024,
+            default: ''
+        },
+        price: {
+            type: 'number',
+            description: 'Стоимость мечты',
+            example: 100,
+            default: ''
+        },
+        raised: {
+            type: 'number',
+            description: 'Cумма предварительного сбора или сумма, которую пользователи сейчас готовы скинуть на мечту',
+            example: 100,
+            default: ''
+        },
+        owner: {
+            description: 'ссылка автора мечты',
+            allOf: [
+                {
+                    '$ref': '#/components/schemas/User'
+                }
+            ]
+        },
+        steps: {
+            description: 'Достижения, которые относятся к мечте',
+            items: {
+                type: 'string'
+            },
+            type: 'array'
+        },
+        description: {
+            type: 'string',
+            description: 'Описание подарка',
+            example: 'Лучший в мире супер-пупер',
+            minimum: 1024,
+            maximum: 1
+        },
+        offers: {
+            description: 'Массив ссылок на заявки скинуться от других пользователей',
+            items: {
+                type: 'string'
+            },
+            type: 'array'
+        },
+        copied: {
+            type: 'number',
+            description: 'Счётчик тех, кто скопировал мечту себе',
+            example: 100,
+            default: ''
         }
     },
-    required: ['id', 'createdAt', 'updatedAt']
+    required: ['id', 'createdAt', 'updatedAt', 'name', 'images', 'owner', 'steps', 'description', 'offers', 'copied']
 } as const;
 
 export const $FindUserDto = {
@@ -164,12 +234,59 @@ export const $FindUserDto = {
 
 export const $CreateWishDto = {
     type: 'object',
-    properties: {}
+    properties: {
+        images: {
+            type: 'string',
+            description: 'Изображение мечты',
+            example: ['https://example.com/achievement.png', 'https://example.com/achievement.png', 'https://example.com/achievement.png'],
+            items: {
+                type: 'string'
+            }
+        },
+        price: {
+            type: 'number',
+            description: 'Стоимость мечты',
+            example: 100,
+            default: ''
+        },
+        description: {
+            type: 'string',
+            description: 'описание мечты',
+            example: 'Сбросить 10 кило',
+            minimum: 1,
+            maximum: 1024,
+            default: ''
+        }
+    },
+    required: ['images']
 } as const;
 
 export const $UpdateWishDto = {
     type: 'object',
-    properties: {}
+    properties: {
+        images: {
+            type: 'string',
+            description: 'Изображение мечты',
+            example: ['https://example.com/achievement.png', 'https://example.com/achievement.png', 'https://example.com/achievement.png'],
+            items: {
+                type: 'string'
+            }
+        },
+        price: {
+            type: 'number',
+            description: 'Стоимость мечты',
+            example: 100,
+            default: ''
+        },
+        description: {
+            type: 'string',
+            description: 'описание мечты',
+            example: 'Сбросить 10 кило',
+            minimum: 1,
+            maximum: 1024,
+            default: ''
+        }
+    }
 } as const;
 
 export const $CreateWishlistDto = {
@@ -204,13 +321,13 @@ export const $Achievement = {
             format: 'date-time',
             type: 'string',
             description: 'дата создания, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
         },
         updatedAt: {
             format: 'date-time',
             type: 'string',
             description: 'дата изменения, тип значения Date',
-            example: '2024-08-28T14:41:55.250Z'
+            example: '2024-08-29T10:49:51.594Z'
         },
         name: {
             type: 'string',
