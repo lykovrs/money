@@ -18,6 +18,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
+    debugger;
     try {
       const hash = await bcrypt.hash(
         createUserDto.password,

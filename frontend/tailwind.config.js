@@ -1,81 +1,132 @@
-const { join } = require('path');
-
 /** @type {import('tailwindcss').Config} */
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 module.exports = {
+  darkMode: ["class"],
   content: [
-    join(
-      __dirname,
-      '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
-    ),
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: "",
   theme: {
-    screens: {
-      // screen breakpoints
-      xs: "375px",
-      sm: "640px",
-      md: "768px",
-      md2: "875px",
-      lg: "1050px",
-      lg1: "1130px",
-      lg2: "1204px",
-      xl: "1355px",
-      xxl: "1536px",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
-        "fluent-bg": "#EDF5F8",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-    },
-    colors: {
-      purple: {
-        20: "#F6F3FE",
-        40: "#DBD2FC",
-        60: "#B7A4F9",
-        80: "#9276F7",
-        100: "#5418FF",
-        200: "#491DE8",
-        300: "#451BDC",
-        400: "#3916B7",
-        500: "#2D1193",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      teal: {
-        20: "#F7FEFF",
-        40: "#DFFCFE",
-        60: "#B0FAFF",
-        80: "#A4F5FD",
-        100: "#79F0FC",
-        200: "#6BE8F8",
-        300: "#5FD0DD",
-        400: "#55BCC9",
-        500: "#1D3C3F",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        first: "moveVertical 30s ease infinite",
+        second: "moveInCircle 20s reverse infinite",
+        third: "moveInCircle 40s linear infinite",
+        fourth: "moveHorizontal 40s ease infinite",
+        fifth: "moveInCircle 20s ease infinite",
       },
-      "light-purple": {
-        20: "#F8F3FE",
-        40: "#E4D2FC",
-        60: "#CAA5F9",
-        80: "#B077F7",
-        100: "#8025F5",
-        200: "#7A23E9",
-        400: "#601BB8",
-        500: "#4D1593",
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+
+        
       },
-      blue: {
-        20: "#F5FCFF",
-        40: "#DDF3FE",
-        60: "#BBE7FC",
-        80: "#9CDDFB",
-        100: "#67C6FA",
-        200: "#53B8F9",
-        300: "#4CAAE8",
-        400: "#38C9FF",
-        500: "#1D4A64",
+      moveHorizontal: {
+        "0%": {
+          transform: "translateX(-50%) translateY(-10%)",
+        },
+        "50%": {
+          transform: "translateX(50%) translateY(10%)",
+        },
+        "100%": {
+          transform: "translateX(-50%) translateY(-10%)",
+        },
       },
-      black: {
-        100: "#212121",
+      moveInCircle: {
+        "0%": {
+          transform: "rotate(0deg)",
+        },
+        "50%": {
+          transform: "rotate(180deg)",
+        },
+        "100%": {
+          transform: "rotate(360deg)",
+        },
+      },
+      moveVertical: {
+        "0%": {
+          transform: "translateY(-50%)",
+        },
+        "50%": {
+          transform: "translateY(50%)",
+        },
+        "100%": {
+          transform: "translateY(-50%)",
+        },
+      },
+      boxShadow: {
+        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
+}
 
-
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}

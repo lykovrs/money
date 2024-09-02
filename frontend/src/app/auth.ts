@@ -2,13 +2,11 @@ import axios from 'axios';
 import {
   AuthControllerSigninResponse,
   AuthService,
+  UsersControllerMeResponse,
+  UsersService,
 } from '../shared/api/requests';
-
-interface AuthProvider {
-  isAuthenticated: boolean;
-  signIn(username: string, password: string): Promise<void>;
-  signOut(): Promise<void>;
-}
+import { QueryClient } from '@tanstack/react-query';
+import { getQueryClient } from './get-query-client';
 
 export const refreshAccessTokenFn = async () => {
   const response = await axios.get<AuthControllerSigninResponse>(
@@ -35,34 +33,53 @@ axios.interceptors.response.use(
   }
 );
 
-const access_token = localStorage.getItem('access_token');
-
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 
-// /**
-//  * This represents some generic auth provider API, like Firebase.
-//  */
-export const authProvider: AuthProvider = {
-  isAuthenticated: Boolean(access_token),
+class Auth {
+  private _queryClient: QueryClient;
+  private static _instance?: Auth;
+  public user: UsersControllerMeResponse | null = null;
+
+  constructor() {
+    if (Auth._instance)
+      throw new Error('Use Singleton.instance instead of new.');
+    Auth._instance = this;
+    this._queryClient = getQueryClient();
+    this.init();
+  }
+
+  static get instance() {
+    return Auth._instance ?? (Auth._instance = new Auth());
+  }
+
+  async init() {
+    const access_token = localStorage.getItem('access_token');
+    if (access_token) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+      this.user = await UsersService.usersControllerMe();
+
+      this._queryClient.setQueryData(
+        ['UsersServiceUsersControllerMe'],
+        this.user
+      );
+    }
+  }
+
   async signIn(username: string, password: string) {
     debugger;
     const resp = (await AuthService.authControllerSignin({
       requestBody: { username, password },
     })) as { access_token: string };
 
-    axios.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${resp.access_token}`;
-
     localStorage.setItem('access_token', resp.access_token);
 
-    authProvider.isAuthenticated = true;
-  },
+    this.init();
+  }
   async signOut() {
     localStorage.removeItem('access_token');
-    authProvider.isAuthenticated = false;
-    await new Promise((r) => setTimeout(r, 500)); // fake delay
+    this.user = null;
     window.location.reload();
-  },
-};
+  }
+}
+
+export const authProvider = new Auth();

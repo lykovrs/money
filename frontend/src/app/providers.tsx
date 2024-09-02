@@ -5,7 +5,6 @@ import { getQueryClient } from './get-query-client';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
-  console.log('===', import.meta.env);
 
   return (
     <QueryClientProvider client={queryClient}>
